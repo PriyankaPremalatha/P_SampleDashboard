@@ -89,18 +89,18 @@ class TicketInsert(View):
 
 		return JsonResponse(data)
 
-class TicketView(ListView):
-	model=TicketCreation
-	template_name='dashboard/ticket.html'
-	context_object_name='objs'
+# class TicketView(ListView):
+# 	model=TicketCreation
+# 	template_name='dashboard/ticket.html'
+# 	context_object_name='objs'
 
-	model=OrgInsertion
-	org_name='dashboard/ticket.html'
-	context_object_name='orgobj'
+# 	model=OrgInsertion
+# 	org_name='dashboard/ticket.html'
+# 	context_object_name='orgobj'
 
 	
 
-	print(TicketCreation.objects.all().count());
+# 	print(TicketCreation.objects.all().count());
 	
 	
 
@@ -182,12 +182,63 @@ class OrgnameInsertion(View):
 
 		return JsonResponse(data)
 
-# class TicketView(ListView):
-# 	template_name='dashboard/ticket.html'
+class TicketView(ListView):
+	# template_name='dashboard/ticket.html'
 
+	# model=OrgInsertion
+	# # org_name='dashboard/ticket.html'
+	# context_object_name='orgobj'
 
-# 	def get_context_data(self,**kwargs):
-# 		context=super(TicketView.self).get_context_data(**kwargs)
-# 		context['obj']=TicketCreation.objects.get()
-# 		context['orgobjs']=OrgInsertion.objects.get()
+# 	 	model=TicketCreation
+# 	 	template_name='dashboard/ticket.html'
+# 	 	context_object_name='objs'
+# 	 	print(context_object_name)
+# def get_context_data(self, **kwargs):
+# 		model=OrgInsertion
+# 		context = super().get_context_data(**kwargs)
+# 		context['orgobj'] = OrgInsertion.objects.all()
 # 		return context
+
+	def get(self, request, *args, **kwargs):
+			ti = TicketCreation.objects.all()
+			oj = OrgInsertion.objects.all()
+			context = {'orgobj': oj, 'objs': ti}
+			return render(request, "dashboard/ticket.html", context=context)
+
+
+
+
+# def head(self, *args, **kwargs):
+# 	model=TicketCreation
+# 	template_name='dashboard/ticket.html'
+#  	# context_object_name='objs'
+
+#  	som_var= self.get_queryset().latest('publication_date') 
+
+
+
+	#return context_object_name
+
+	# def get_queryset(self):
+	# 	context1=list(OrgInsertion.objects.all())
+	# 	print (getattr(context1,'id'))
+	# 	#context1['orgobjs']=list(OrgInsertion.objects.all())
+	# 	return context1
+
+	# def get_context_data(self,**kwargs):
+	# 	context=super(OrgInsertion.self).get_context_data(**kwargs)
+	# 	context['orgobj']=OrgInsertion.objects.all()
+	# 	print(context)
+	# 	return context
+
+
+	# def get_context_data(self,**kwargs):
+	# 	context=super(TicketView.self).get_context_data(**kwargs)
+	# 	context['obj']=TicketCreation.objects.all()
+	# 	print(context)
+	# 	return context
+
+class OrgView(ListView):
+	model=OrgInsertion
+	template_name='dashboard/ticket.html'
+	context_object_name='orgobjs'
