@@ -1,0 +1,23 @@
+body
+{
+	background: url('image/simple.jpeg');
+	background-size: cover;
+	
+	background-repeat: no-repeat;
+
+}
+label
+{
+	font-family: century scholbook;
+	color: black;
+	font-size: 20px;
+	font-style: italic;
+
+}
+h1
+{
+	font-style: italic;
+	font-family: palatino linotype;
+
+}
+

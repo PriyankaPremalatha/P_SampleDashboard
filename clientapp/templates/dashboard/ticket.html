@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content=""><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'><link rel="stylesheet" href="{% static 'effects/styles.css' %}">
+
+</head>
+<body>
+  {% block content %}
+<!-- partial:index.partial.html -->
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="mainNav">
+
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="{% url 'index' %}">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="charts.html">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Status</span>
+          </a>
+        </li>
+        <li class="nav-item"  data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="" data-toggle="modal" data-target="#MyTicketModal">
+            <i class="fa fa-fw fa-pencil"></i>
+            <span class="nav-link-text">New Ticket</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link" href="{% url 'ticket' %}">
+            <i class="fa fa-fw fa-book"></i>
+            <span class="nav-link-text">Add System Info</span>
+          </a>
+          
+        </li>
+             
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link" href="{% url 'ticket' %}">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Tickets</span>
+          </a>
+          
+        </li>
+             
+      
+          </ul>
+        </li>
+       
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center"  id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+            <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">New Messages:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>David Miller</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Jane Smith</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>John Doe</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all messages</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-bell"></i>
+            <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+            <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">New Alerts:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all alerts</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-lg-2">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" style="color: white;">
+            {{request.user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">My Dashboard</li>
+      </ol>
+      
+      
+    <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>&nbsp;Tickets
+          <button id="btnaddorg" class="btn btn-default" style="float:right; font-weight: 20px;"><i class="fa fa-pencil"></i>&nbsp;Add Organization</button>
+        </div>
+
+        
+        <div class="card-body">
+          <div class="table-responsive">
+
+
+            <div style="float: left;">
+              <button type="button" id="btnsetting" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog" style="font-size:25px;"></i></button>
+          <div class="dropdown-menu">
+              <a href="#" class="dropdown-item" data-value="ID" tabIndex="-1"><input type="checkbox"/>&nbsp;ID</a>
+              <a href="#" class="dropdown-item" data-value="Summary" tabIndex="-1"><input type="checkbox"/>&nbsp;Summary</a>
+              <a href="#" class="dropdown-item" data-value="Assignee" tabIndex="-1"><input type="checkbox"/>&nbsp;Assignee</a>
+              <a href="#" class="dropdown-item" data-value="Creator" tabIndex="-1"><input type="checkbox"/>&nbsp;Creator</a>
+              <a href="#" class="dropdown-item" data-value="Organization" tabIndex="-1"><input type="checkbox"/>&nbsp;Organization</a>
+              <a href="#" class="dropdown-item" data-value="Priority" tabIndex="-1"><input type="checkbox"/>&nbsp;Proirity</a>
+              <a href="#" class="dropdown-item" data-value="Category" tabIndex="-1"><input type="checkbox"/>&nbsp;Category</a>
+              <a href="#" class="dropdown-item" data-value="Due" tabIndex="-1"><input type="checkbox"/>&nbsp;Due</a>
+              <a href="#" class="dropdown-item" data-value="Updated" tabIndex="-1"><input type="checkbox"/>&nbsp;Updated</a>
+              <a href="#" class="dropdown-item" data-value="Created" tabIndex="-1"><input type="checkbox"/>&nbsp;Created</a>
+          </div>
+            </div>
+
+
+      
+            <div >
+                <button style="margin-left: 20px;" class="btn btn-secondary dropdown-toggle dropdown" type="button" data-toggle="dropdown">Open</button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Open</a>
+                  <a class="dropdown-item" href="#">Waiting</a>
+                  <a class="dropdown-item" href="#">Closed</a>
+                  <a class="dropdown-item" href="#">Unassigned</a>
+                  <a class="dropdown-item" href="#">All</a>
+                  <a class="dropdown-item" href="#">Active Alert</a>
+                  <a class="dropdown-item" href="#">Past Due</a>
+                </div>
+
+
+                 <button id="btnticket" class="btn btn-default" style="float:right; font-weight: 20px;"><i class="fa fa-plus"></i>&nbsp;New Ticket</button>
+
+            </div><br><br>
+
+          </div>
+        
+                
+           <div class="custom-scrollbar">
+            <table class="table table-bordered " id="tickettable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  
+                  <th>ID</th>
+                  <th>Summary</th>
+                  <th>Assignee</th>
+                  <th>Creator</th>
+                  <th>Organization</th>
+                  <th>Priority</th>
+                  <th>Category</th>
+                  <th>DUE</th>
+                  <th>Updated</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+            {% if objs %}
+            {% for obj in objs %}
+              <tr id="obj-{{obj.id}}">
+                  <td class="objID userData" name="ID">{{obj.id}}</td>
+
+                  <td class="objSummary userData" name="summarytd">{{obj.summary}}</td>
+                {% if obj.assignee == '' %}
+
+                  <td class="objAssignee userData" name="assigneetd"><a href="" class="assigneename">Accept</a></td>
+
+                 {% else %} 
+
+                  <td class="objAssignee userData" name="assigneetd">{{obj.assignee}}</td>
+                 {% endif %}
+
+                  <td class="objCreator userData" name="creatortd">{{obj.creator}}</td>
+
+                  <td class="objOrganization userData" name="organizationtd">{{obj.organization}}</td>
+
+                  <td class="objPriority userData" name="prioritytd">{{obj.priority}}</td>
+
+                  <td class="objCategory userData" name="categorytd">{{obj.category}}</td>
+
+                  <td class="objDuedate userData" name="duedatetd">{{obj.duedate}}</td>
+
+                  <td class="objUpdated userData" name="updatedtd">{{obj.updated}}</td>
+
+                  <td class="objCreated userData" name="crreatedtd">{{obj.created}}</td>
+              </tr>
+              {% endfor %}
+            
+              {% endif %}
+            
+              
+              </tbody>
+
+            </table>
+           </div>
+          </div>
+        </div>
+        
+              <div class="card mb-3">
+                   <div class="row">
+                    <div class="col-sm-2" id="p1">
+                      <dt style="margin-left: 30px;">Priority</dt>  
+                      <a style="margin-left: 30px;" class="dropdown-toggle dropdown" href="" data-toggle="dropdown"><span id="selected">Medium</span><span class="caret"></span></a>
+                      <div class="dropdown-menu p1">
+                        <a class="dropdown-item" href="#">Medium</a>
+                        <a class="dropdown-item" href="#">High</a>
+                        <a class="dropdown-item" href="#">Low</a>
+                        
+                      </div>
+                    </div>
+
+                      <div class="col-sm-2">
+                        <dt >Due Date</dt>
+                       <a class="dropdown-toggle dropdown" href="" data-toggle="dropdown"><span id="duedate">Default</span><span class="caret"></span></a>
+                      <div class="dropdown-menu d1">
+                        <a class="dropdown-item" href="#">End of Day</a>
+                        <a class="dropdown-item" href="#">Tommorrow</a>
+                        <a class="dropdown-item" href="#">Friday</a>
+                        <a class="dropdown-item" href="#">Monday</a>
+                        <a class="dropdown-item" href="#">In a week</a>
+                     </div>
+
+                      </div>  
+
+                       <div class="col-sm-2">
+                        <dt>Assignee</dt>
+                       <a class="dropdown-toggle dropdown" href="" data-toggle="dropdown"><span id="assignee">Default</span><span class="caret"></span></a>
+                      <div class="dropdown-menu a1">
+                        <a class="dropdown-item" href="#">Deepak Srinivasan</a>
+                        <a class="dropdown-item" href="#">Janarthan Anbu</a>
+                        <a class="dropdown-item" href="#">Madhivanan</a>
+                        <a class="dropdown-item" href="#">Satheesh</a>
+                      </div>
+                     
+                      </div>  
+
+                      <div class="col-sm-2">
+                        <dt >Category</dt>
+                       <a class="dropdown-toggle dropdown" href="" data-toggle="dropdown"><span id="selected2">Unspecified</span><span class="caret"></span></a>
+                      <div class="dropdown-menu c1">
+                        <a class="dropdown-item" href="#">Unspecified</a>
+                        <a class="dropdown-item" href="#">Email</a>
+                        <a class="dropdown-item" href="#">Hardware</a>
+                        <a class="dropdown-item" href="#">Maintenance</a>
+                        <a class="dropdown-item" href="#">Softawre</a>
+                        <a class="dropdown-item" href="#">Printer</a>
+                        <a class="dropdown-item" href="#">Network</a>
+                        <a class="dropdown-item" href="#">Other</a>
+                     </div>
+                     
+                    </div>  
+
+                    <div class="col-sm-2">
+                      <dt>Time Spent</dt>
+                       <a class="dropdown-toggle dropdown" href="" data-toggle="dropdown"><span id="timespent">Time Spent</span><span class="caret"></span></a>
+                      <div class="dropdown-menu t1">
+                          <a class="dropdown-item" href="#">+15m</a>
+                        <a class="dropdown-item" href="#">+30m</a>
+                        <a class="dropdown-item" href="#">+45m</a>
+                        <a class="dropdown-item" href="#">+1hr</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">&nbsp;...</a>
+
+                      </div>
+                     
+                      </div>  
+
+                      <div class="col-sm-2">
+                        <dt>Last Activity</dt>
+                       <a class="dropdown-toggle dropdown" href="" data-toggle="dropdown">Last sActivity</a>
+                      <div class="dropdown-menu">
+                          
+
+                      </div>
+                     
+                      </div>  
+
+
+                  </div> 
+              </div>
+              
+
+
+              
+                <div class="row" style="float: right;">
+
+                   
+
+                   <div class="col-sm-3">
+                    <button id="closebtn" class="btn btn-default dropdown-toggle dropdown" type="button" data-toggle="dropdown" >Close</button> 
+
+                    <div class="dropdown-menu">
+                      <a href="" class="dropdown-item">Waiting on user</a>
+                      <a href="" class="dropdown-item">Merge into another ticket</a>
+                    </div>
+
+                   </div> 
+                    
+                    <div class="col-sm-5">
+                    <button id="remotesessionbtn" class="btn btn-default" type="button" data-toggle="dropdown">Remote Session</button>        
+                   </div> 
+                   
+                   <div class="col-sm-4">
+                    <button id="morebtn" class="btn btn-default dropdown-toggle dropdown" type="button" data-toggle="dropdown">More</button>    
+                    <div class="dropdown-menu">
+                      <a href="" class="dropdown-item">Delete</a>
+                    </div>           
+                   </div> 
+                </div>
+              
+          </div>
+     
+      
+    </div>
+      
+
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure to logout from this site ?</div>
+          <div class="modal-footer">
+            
+            <a class="btn btn-primary" href="{% url 'homepage' %}">Logout</a>
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+<!-- Ticket Modal-->
+    <div class="modal fade" id="MyTicketModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Ticket</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          
+            <form action="" id="addTicket" >
+              {% csrf_token %}
+              <div class="modal-body">    
+              
+                  <div class="form-group">
+                    
+                    <div ><input type="text" name="creator" autocomplete="off" class="form-control" hidden="True" value="{{request.user}}" disabled="true"></div>
+                  </div>
+              
+                  <div class="form-group">
+                    <label for="organization">Organization</label>
+                  
+                  
+                    <select id="organization" class="form-control" name="organization">
+                      {% for orgobjs in orgobj %}
+                        <option value={{orgobjs.organizationname}}>{{orgobjs.organizationname}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+            
+                  
+            
+                  <div class="form-group">
+                    <label>Contact</label>
+                    <div ><input type="text" name="contact" autocomplete="off" class="form-control" maxlength="12"></div>
+                  </div>
+
+                   <div class="form-group">
+                    <label>Summary</label>
+                    <div ><input type="text" name="summary" autocomplete="off" class="form-control"></div>
+                  </div>
+
+                   <div class="form-group">
+                    <label>Description</label>
+                    <div ><textarea type="text" name="description" autocomplete="off" class="form-control"></textarea></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Assignee</label>
+                    <div ><input type="text" name="assignee" autocomplete="off" class="form-control"></div>
+                  </div>
+
+              
+                  <div class="form-group">
+                    <label>Due Date</label>
+                    <div class="row">
+                    <div class="col-sm-6"><input type="date" name="duedate" autocomplete="off" class="form-control"  ></div>
+                    <div class="col-sm-6" ><input type="time" name="time" autocomplete="off" class="form-control" placeholder="03:48 PM"></div>
+                    </div>
+                  </div>
+
+
+                   <div class="form-group">
+                    <label for="priority">Priority</label>
+                   
+                    <div><select id="priority" class="form-control" name="priority">
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Low">Low</option>
+                        
+                        
+                    </select></div>
+                  </div>
+              
+
+                         <div class="form-group">
+                    <label for="category">Category</label>
+                   
+                    <div><select id="category" class="form-control" name="category">
+                        <option value="Unspecified">Unspecified</option>
+                        <option value="Email">Email</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Network">Network</option>
+                        <option value="Printer">Printer</option>
+                        <option value="Software">Software</option>
+                        <option value="Other">Other</option>                        
+                    </select></div>
+                  </div>
+              
+                    <div class="form-group">
+                    <label>Related</label>
+                    <div ><input type="text" name="Related" autocomplete="off" class="form-control" placeholder="Add related devices"></div>
+                  </div>
+
+
+
+              </div>
+             
+          
+          <div class="modal-footer">
+            
+            <button class="btn btn-info" type="submit">Submit</button>
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <div class="modal fade" id="addorgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4> Organization Details </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <form action="" id="addOrg">
+            {% csrf_token %}      
+          <div class="modal-body">
+            
+              
+                       
+                <div class="form-group row">
+                  <label class="col-sm-5">Organization Name</label>
+                  <div class="col-sm-7"><input type="text" name="organizationname" placeholder="Organization Name" class="form-control"></div>
+                </div>  
+    
+
+          </div>
+          <div class="modal-footer">
+            
+            <button class="btn btn-primary" href="" type="submit">Add</button>
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+         
+        </div>
+      </div>
+    </footer>
+
+
+
+  {% endblock %}
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+
+{% block javascript %}
+      <script type="text/javascript">
+        
+          //add new organization
+          
+              $(function () {
+                  $("#btnaddorg").click(function(){
+                  $('#addorgModal').modal('show');
+              });
+              });
+
+
+          //New Ticket Modal
+           
+            $(function () {
+                  $("#btnticket").click(function(){
+                  $('#MyTicketModal').modal('show');
+              });
+              });
+
+
+          //new ticket creation code
+
+        $("#addTicket").submit(function(){
+            
+            alert("hi");
+            var creatorInput=$('input[name="creator"]').val().trim();
+
+            var element=document.getElementById("organization");
+            var organizationInput=element.options[element.selectedIndex].value;
+
+            var contactInput=$('input[name="contact"]').val().trim();
+            var summaryInput=$('input[name="summary"]').val().trim();
+            var descriptionInput=$('textarea[name="description"]').val().trim();
+            var assigneeInput=$('input[name="assignee"]').val().trim();
+            var duedateInput=$('input[name="duedate"]').val().trim();
+            var timeInput=$('input[name="time"]').val().trim();
+
+            
+            var element = document.getElementById("priority");
+            var priorityInput = element.options[element.selectedIndex].value;
+
+            var element = document.getElementById("category");
+            var categoryInput = element.options[element.selectedIndex].value;
+
+            var RelatedInput=$('input[name="Related"]').val().trim();
+
+            
+            if(contactInput && descriptionInput && summaryInput
+              && RelatedInput)
+            {
+                $.ajax({
+
+                          url:'{% url "ticketinsertions" %}',
+                          data:{
+                                  'creator':creatorInput,
+                                  'organization':organizationInput,
+                                  'contact':contactInput,
+                                  'summary':summaryInput,
+                                  'description':descriptionInput,
+                                  'assignee':assigneeInput,
+                                  'duedate':duedateInput,
+                                  'time':timeInput,
+                                  'priority':priorityInput,
+                                  'category':categoryInput,
+                                  'Related':RelatedInput,
+
+                          },
+                          dataType:'json',
+                          success:function(data)
+                          {
+                            alert('Ticket raised Successfully')
+                            
+                          }
+
+
+                        });
+
+
+            }
+            else
+            {
+              alert("Enter the missing fields");
+              $('#MyTicketModal').modal('show');
+            }
+
+            $('form#addTicket').trigger("reset");
+        $('#MyTicketModal').modal('hide');
+       return false;
+
+
+       });
+
+
+
+
+
+
+
+        //anchor tag link click function
+          $('.p1 a').click(function(){
+
+
+            $('#selected').text($(this).text());
+          });
+
+           $('.d1 a').click(function(){
+
+
+            $('#duedate').text($(this).text());
+          });
+
+
+           $('.a1 a').click(function(){
+
+
+            $('#assignee').text($(this).text());
+
+          });
+
+           $('.c1 a').click(function(){
+
+
+            $('#selected2').text($(this).text());
+          });
+
+            $('.t1 a').click(function(){
+
+
+            $('#timespent').text($(this).text());
+          });
+           
+
+            $('.assigneename ').click(function(){
+
+                alert("Alert");
+            
+          });
+           
+
+
+
+    $("#addOrg").submit(function(){
+            
+
+            orgnameInput=$('input[name="organizationname"]').val().trim();
+            if(orgnameInput)
+              
+            {
+                $.ajax({
+
+                          url:'{% url "orgnameinsertion" %}',
+                          data:{
+                                  
+                                  'organizationname':orgnameInput,
+                          },
+                          dataType:'json',
+                          success:function()
+                          {
+                            alert('Organization added Successfully')
+                            
+                          }
+
+
+                        });
+
+
+            }
+            else
+            {
+              alert("Enter the missing fields");
+            }
+
+            $('form#addorg').trigger("reset");
+            $('#addorgModal').modal('hide');
+            return false;
+
+       });
+
+
+      </script>
+
+  {% endblock javascript %}
+</body>
+<!-- partial -->
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js'></script>
+<script src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js'></script>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script> -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js'></script><script  src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
