@@ -14,6 +14,6 @@ urlpatterns=[
      path("ticket/",views.TicketView.as_view(),name="ticket"),
      path("ticketinsertions/",views.TicketInsertion.as_view(),name="ticketinsertions"),
      path("orgnameinsertion/",views.OrgnameInsertion.as_view(),name="orgnameinsertion"),
-    
+     path("acceptassignee/",views.AssigneeAccept.as_view(),name="acceptassignee")
 
 ]

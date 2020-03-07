@@ -261,31 +261,31 @@
             {% if objs %}
             {% for obj in objs %}
               <tr id="obj-{{obj.id}}">
-                  <td class="objID userData" name="ID">{{obj.id}}</td>
+                  <td class="objID userData" id="tr-id" name="id">{{obj.id}}</td>
 
-                  <td class="objSummary userData" name="summarytd">{{obj.summary}}</td>
+                  <td class="objSummary userData" name="summary">{{obj.summary}}</td>
                 {% if obj.assignee == '' %}
 
-                  <td class="objAssignee userData" name="assigneetd"><a href="" class="assigneename">Accept</a></td>
+                  <td class="objAssignee upassignee userData" id="tr-assignee" name="assignee"><a href="" class="assigneename" onClick="editUser({obj.id}}">Accept</a></td>
 
                  {% else %} 
 
-                  <td class="objAssignee userData" name="assigneetd">{{obj.assignee}}</td>
+                  <td class="objAssignee userData"  name="assignee">{{obj.assignee}}</td>
                  {% endif %}
 
-                  <td class="objCreator userData" name="creatortd">{{obj.creator}}</td>
+                  <td class="objCreator userData" name="creator">{{obj.creator}}</td>
 
-                  <td class="objOrganization userData" name="organizationtd">{{obj.organization}}</td>
+                  <td class="objOrganization userData" name="organization">{{obj.organization}}</td>
 
-                  <td class="objPriority userData" name="prioritytd">{{obj.priority}}</td>
+                  <td class="objPriority userData" name="priority">{{obj.priority}}</td>
 
-                  <td class="objCategory userData" name="categorytd">{{obj.category}}</td>
+                  <td class="objCategory userData" name="category">{{obj.category}}</td>
 
-                  <td class="objDuedate userData" name="duedatetd">{{obj.duedate}}</td>
+                  <td class="objDuedate userData" name="duedate">{{obj.duedate}}</td>
 
-                  <td class="objUpdated userData" name="updatedtd">{{obj.updated}}</td>
+                  <td class="objUpdated userData" name="updated">{{obj.updated}}</td>
 
-                  <td class="objCreated userData" name="crreatedtd">{{obj.created}}</td>
+                  <td class="objCreated userData" name="created">{{obj.created}}</td>
               </tr>
               {% endfor %}
             
@@ -623,7 +623,7 @@
               $(function () {
                   $("#btnaddorg").click(function(){
                   $('#addorgModal').modal('show');
-                  
+
               });
               });
 
@@ -748,15 +748,46 @@
             $('#timespent').text($(this).text());
           });
            
+            //accept click function
 
             $('.assigneename ').click(function(){
 
-                alert("Alert");
-            
+                /*var tId=$('td[name="id"]').val().trim();*/
+                var currentRow = $(this).closest("tr")[0]; 
+                var cells = currentRow.cells;
+
+                var firstCell = cells[0].textContent;
+
+                
+
+                $.ajax({
+
+
+                      url: '{% url "acceptassignee" %}',
+                      data: {
+                              'id':firstCell
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                          if (data.user) {
+                            updateToUserTable(data.user);
+                          }
+                      }
+                  });
+                      
           });
            
+            //edit function to get ticketID
 
-
+              function editUser(id) {
+                    if (id) {
+                      tr_id = "#obj-" + id;
+                      assignee = $(tr_id).find(".upassignee");
+                      $('#tr-id').val(id);
+                      $('#tr-assignee').val(assignee);
+                      
+                    }
+                  }
 
     $("#addOrg").submit(function(){
             
