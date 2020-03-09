@@ -233,7 +233,7 @@
         
                 
            <div class="custom-scrollbar">
-            <table class="table table-bordered table-responsive" id="tickettable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="tickettable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   
@@ -241,7 +241,7 @@
                   <th>Summary</th>
                   <th>Assignee</th>
                   <th>Creator</th>
-                  <th>Organization</th>
+                  <th >Organization</th>
                   <th>Priority</th>
                   <th>Category</th>
                   <th>DUE</th>
@@ -251,34 +251,34 @@
               </thead>
               
               <tbody>
-            {% if objs %}
-            {% for obj in objs %}
-              <tr id="obj-{{obj.id}}">
-                  <td class="objID userData" id="tr-id" name="id">{{obj.id}}</td>
+            {% if mytickets %}
+            {% for myticket in mytickets %}
+              <tr id=" myticket-{{ myticket.id}}">
+                  <td class="myticketID userData" id="tr-id" name="id">{{ myticket.id}}</td>
 
-                  <td class="objSummary userData" name="summary">{{obj.summary}}</td>
+                  <td class="myticketSummary userData" name="summary">{{ myticket.summary}}</td>
                 {% if obj.assignee == '' %}
 
-                  <td class="objAssignee upassignee userData" id="tr-assignee" name="assignee"><a href="" class="assigneename" onClick="editUser({obj.id}}">Accept</a></td>
+                  <td class="myticketAssignee upassignee userData" id="tr-assignee" name="assignee"><a href="" class="assigneename" onClick="editUser({ myticket.id}}">Accept</a></td>
 
                  {% else %} 
 
-                  <td class="objAssignee userData"  name="assignee">{{obj.assignee}}</td>
+                  <td class="myticketAssignee userData"  name="assignee">{{ myticket.assignee}}</td>
                  {% endif %}
 
-                  <td class="objCreator userData" name="creator">{{obj.creator}}</td>
+                  <td class="myticketCreator userData" name="creator">{{ myticket.creator}}</td>
 
-                  <td class="objOrganization userData" name="organization">{{obj.organization}}</td>
+                  <td class="myticketOrganization userData" name="organization" >{{ myticket.organization}}</td>
 
-                  <td class="objPriority userData" name="priority">{{obj.priority}}</td>
+                  <td class="myticketPriority userData" name="priority">{{ myticket.priority}}</td>
 
-                  <td class="objCategory userData" name="category">{{obj.category}}</td>
+                  <td class="myticketCategory userData" name="category">{{ myticket.category}}</td>
 
-                  <td class="objDuedate userData" name="duedate">{{obj.duedate|date:"d-M-Y"}}</td>
+                  <td class="myticketDuedate userData" name="duedate">{{ myticket.duedate}}</td>
 
-                  <td class="objUpdated userData" name="updated">{{obj.updated|date:"d-M-Y"}}</td>
+                  <td class="myticketUpdated userData" name="updated">{{ myticket.updated}}</td>
 
-                  <td class="objCreated userData" name="created">{{obj.created|date:"d-M-Y"}}</td>
+                  <td class="myticketCreated userData" name="created">{{ myticket.created}}</td>
               </tr>
               {% endfor %}
             
@@ -471,7 +471,7 @@
                   
                     <select id="organization" class="form-control" name="organization">
                       {% for orgobjs in orgobj %}
-                        <option value="{{orgobjs.organizationname}}">{{orgobjs.organizationname}}</option>
+                        <option value={{orgobjs.organizationname}}>{{orgobjs.organizationname}}</option>
                       {% endfor %}
                     </select>
                   </div>

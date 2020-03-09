@@ -233,7 +233,7 @@
         
                 
            <div class="custom-scrollbar">
-            <table class="table table-bordered table-responsive" id="tickettable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="tickettable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   
@@ -241,7 +241,7 @@
                   <th>Summary</th>
                   <th>Assignee</th>
                   <th>Creator</th>
-                  <th>Organization</th>
+                  <th >Organization</th>
                   <th>Priority</th>
                   <th>Category</th>
                   <th>DUE</th>
@@ -251,34 +251,35 @@
               </thead>
               
               <tbody>
-            {% if objs %}
-            {% for obj in objs %}
-              <tr id="obj-{{obj.id}}">
-                  <td class="objID userData" id="tr-id" name="id">{{obj.id}}</td>
+            {% if unassignedtickets %}
+            {% for unassignedticket in unassignedtickets %}
+              <tr id="unassignedticket-{{unassignedticket.id}}">
+                  <td class="unassignedticketID userData" id="tr-id" name="id">{{ unassignedticket.id}}</td>
 
-                  <td class="objSummary userData" name="summary">{{obj.summary}}</td>
-                {% if obj.assignee == '' %}
+                  <td class="unassignedticketSummary userData" name="summary">{{ unassignedticket.summary}}</td>
 
-                  <td class="objAssignee upassignee userData" id="tr-assignee" name="assignee"><a href="" class="assigneename" onClick="editUser({obj.id}}">Accept</a></td>
+                {% if unassignedticket.assignee == '' %}
+
+                  <td class="unassignedticketAssignee  userData" id="tr-assignee" name="assignee"><a href="" class="assigneename" onClick="editUser({ unassignedticket.id}}">Accept</a></td>
 
                  {% else %} 
 
-                  <td class="objAssignee userData"  name="assignee">{{obj.assignee}}</td>
+                  <td class="unassignedticketAssignee userData"  name="assignee">{{unassignedticket.assignee}}</td>
                  {% endif %}
 
-                  <td class="objCreator userData" name="creator">{{obj.creator}}</td>
+                  <td class="unassignedticketCreator userData" name="creator">{{unassignedticket.creator}}</td>
 
-                  <td class="objOrganization userData" name="organization">{{obj.organization}}</td>
+                  <td class="unassignedticketOrganization userData" name="organization" >{{ unassignedticket.organization}}</td>
 
-                  <td class="objPriority userData" name="priority">{{obj.priority}}</td>
+                  <td class="unassignedtickettPriority userData" name="priority">{{unassignedticket.priority}}</td>
 
-                  <td class="objCategory userData" name="category">{{obj.category}}</td>
+                  <td class="unassignedticketCategory userData" name="category">{{unassignedticket.category}}</td>
 
-                  <td class="objDuedate userData" name="duedate">{{obj.duedate|date:"d-M-Y"}}</td>
+                  <td class="unassignedticketDuedate userData" name="duedate">{{unassignedticket.duedate}}</td>
 
-                  <td class="objUpdated userData" name="updated">{{obj.updated|date:"d-M-Y"}}</td>
+                  <td class="unassignedticketUpdated userData" name="updated">{{unassignedticket.updated}}</td>
 
-                  <td class="objCreated userData" name="created">{{obj.created|date:"d-M-Y"}}</td>
+                  <td class="unassignedticketCreated userData" name="created">{{unassignedticket.created}}</td>
               </tr>
               {% endfor %}
             
@@ -471,7 +472,7 @@
                   
                     <select id="organization" class="form-control" name="organization">
                       {% for orgobjs in orgobj %}
-                        <option value="{{orgobjs.organizationname}}">{{orgobjs.organizationname}}</option>
+                        <option value={{orgobjs.organizationname}}>{{orgobjs.organizationname}}</option>
                       {% endfor %}
                     </select>
                   </div>
