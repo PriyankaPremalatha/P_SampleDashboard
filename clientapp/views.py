@@ -59,7 +59,9 @@ def index(request):
 
 	countunassigned=TicketCreation.objects.filter(assignee='').count()
 
-	context={'count':count,'countticket':countticket,'countunassigned':countunassigned}
+	opentickets=TicketCreation.objects.exclude(assignee__isnull=True).exclude(assignee__exact='').count()
+
+	context={'count':count,'countticket':countticket,'countunassigned':countunassigned,'opentickets':opentickets}
 	
 	print(TicketCreation.objects.filter(assignee=request.user).count())
 	return render(request,"dashboard/index.html",context)
@@ -221,6 +223,18 @@ class UnassignedTicketView(ListView):
 		return render(request,"dashboard/unassignedticket.html",context)
 
 
+class OpenTicketView(ListView):
+
+	def get(self,request):
+		opentickets=TicketCreation.objects.exclude(assignee__isnull=True).exclude(assignee__exact='')
+		context={'opentickets':opentickets}
+
+	
+		return render(request,"dashboard/openticket.html",context)
+
+
+	
+		
 	
 		
 	
